@@ -13,7 +13,7 @@ fn main() {
         let secret_number = rand::thread_rng()
             .gen_range(1..=100); // The 'gen_range' method is defined by the 'Rng' trait. Format of input: `start..=end` inclusive in both ends
 
-        println!("The secret number is: {secret_number}");
+        // println!("The secret number is: {secret_number}");
 
         println!("Please input your guess:");
 
