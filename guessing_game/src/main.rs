@@ -26,7 +26,14 @@ fn main() {
             .expect("Failed to read line");
 
         // the ':' tells Rust we;ll annotate the variable's type. Parse realizes that the parsed expression should be u32.
-        let guess: u32 = guess.trim().parse().expect("Please type a numer!");
+        // We match against the parsing's `Result` enums: Ok and Err
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num, // the `Ok` `Result` contains the parsed number inside of it.
+            Err(err) => { // the `Err` `Result` contains an error returned from a failing parsing.
+                println!("Got this error: {err}\nContinuing...\n");
+                continue;
+            }
+        };
 
         // match expression is much like a switch case expression but the terminology is a bit different:
         // 'match' is made out of `arms`. An `arm` consists of a `pattern` to match against.
