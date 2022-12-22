@@ -1,7 +1,17 @@
 use std::io; // importing the 'io' module from the standard library (package) 'std'
+use rand::Rng; // 'use' == import. 'Rng' is a trait that must be in scope to use random number generators methods.
+
+// to read more about any crate that we import to the project, run `cargo doc --open` and choose the crate you're interested in.
 
 fn main() {
     println!("Guess your number!");
+
+    // 'thread_rng()' gives us the particular random number generator we're going to use: one that is local to the current thread of execution
+    // and is seeded by the OS.
+    let secret_number = rand::thread_rng()
+        .gen_range(1..=100); // The 'gen_range' method is defined by the 'Rng' trait. Format of input: `start..=end` inclusive in both ends
+
+    println!("The secret number is: {secret_number}");
 
     println!("Please input your guess:");
 
