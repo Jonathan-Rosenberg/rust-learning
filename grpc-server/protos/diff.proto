@@ -1,0 +1,27 @@
+syntax = "proto3";
+package proto;
+option go_package = "./blabla";
+
+message DiffRequest {
+  TablePaths paths = 1;
+  S3GatewayConfig gateway_config = 2;
+}
+
+message TablePaths {
+  string first_table_path = 1;
+  string second_table_path = 2;
+}
+
+message S3GatewayConfig {
+  string key = 1;
+  string secret = 2;
+  string endpoint = 3;
+}
+
+message DiffResponse {
+  bytes resp = 1;
+}
+
+service Differ {
+  rpc Diff(DiffRequest) returns (DiffResponse);
+}
